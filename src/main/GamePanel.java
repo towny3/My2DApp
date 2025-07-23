@@ -30,23 +30,26 @@ public class GamePanel extends JPanel implements Runnable {
 		gameThread.start();
 	}
 	
+	// the game loop
 	@Override
 	public void run() {
 		while (gameThread != null) {
 //			System.out.println("Game loop is running.");
 			
 			// 1. UPDATE: update information such as character positions
-			update();
+			update(); // handles the logic of the game loop
 			
 			// 2. DRAW: draw the screen with the updated information
-			repaint();
+			repaint(); // draws everything from paintComponent
 		}
 	}
 	
+	// updated each frame
 	public void update() {
 		
 	}
 	
+	// painted onto the screen
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
