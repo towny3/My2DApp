@@ -17,12 +17,23 @@ public class GamePanel extends JPanel implements Runnable {
 	final int screenWidth = maxScreenCol * tileSize;
 	final int screenHeight = maxScreenRow * tileSize;
 	
+	// FPS
+	int fps = 60;
+	
+	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
+	
+	// sets player's default position
+	int playerX = 100;
+	int playerY = 100;
+	int playerSpeed = 4;
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true);
+		this.addKeyListener(keyH);
+		this.setFocusable(true);
 	}
 	
 	public void startGameThread() {
@@ -34,7 +45,6 @@ public class GamePanel extends JPanel implements Runnable {
 	@Override
 	public void run() {
 		while (gameThread != null) {
-//			System.out.println("Game loop is running.");
 			
 			// 1. UPDATE: update information such as character positions
 			update(); // handles the logic of the game loop
@@ -46,7 +56,21 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	// updated each frame
 	public void update() {
+		if (keyH.upPressed) {
+			playerY -= playerSpeed;
+		}
 		
+		if (keyH.leftPressed) {
+			playerX -= playerSpeed;
+		}
+		
+		if (keyH.downPressed) {
+			playerY += playerSpeed;
+		}
+		
+		if (keyH.rightPressed) {
+			playerX += playerSpeed;
+		}
 	}
 	
 	// painted onto the screen
@@ -55,7 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
 		
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setColor(Color.white);
-		g2.fillRect(100, 100, tileSize, tileSize);
+		g2.fillRect(playerX, playerY, tileSize, tileSize);
 		g2.dispose(); // saves some memory
 	}
 }
