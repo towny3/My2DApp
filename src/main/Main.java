@@ -23,5 +23,7 @@ public class Main {
 		// causes the window to appear in the middle of the screen
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
+		
+		gamePanel.startGameThread();
 	}
 }
