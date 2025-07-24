@@ -48,27 +48,33 @@ public class Player extends Entity {
 	}
 	
 	public void update() {
+		boolean moved = false;
+		
 		if (keyH.upPressed) {
 			direction = "up";
 			y -= speed;
+			moved = true;
 		}
 		
 		if (keyH.leftPressed) {
 			direction = "left";
 			x -= speed;
+			moved = true;
 		}
 		
 		if (keyH.downPressed) {
 			direction = "down";
 			y += speed;
+			moved = true;
 		}
 		
 		if (keyH.rightPressed) {
 			direction = "right";
 			x += speed;
+			moved = true;
 		}
 		
-		spriteCounter++;
+		if (moved) spriteCounter++;
 		if (spriteCounter > 10) {
 			if (spriteNum == 1) {
 				spriteNum = 2;
