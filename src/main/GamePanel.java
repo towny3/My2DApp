@@ -47,8 +47,6 @@ public class GamePanel extends JPanel implements Runnable {
 	// the game loop
 	@Override
 	public void run() {
-		// Time between frames
-		double drawInterval = 1000000000/FPS;
 		
 		double delta = 0;
 		long lastTime = System.nanoTime();
@@ -58,12 +56,15 @@ public class GamePanel extends JPanel implements Runnable {
 		long timer = 0;
 		int drawCount = 0;
 		
+		// when the next frame must be drawn
+		double drawInterval = 1000000000/FPS;
+		double nextDrawTime = System.nanoTime() + drawInterval;
+		
 		while (gameThread != null) {
 			currentTime = System.nanoTime();
 			
 			delta += (currentTime - lastTime) / drawInterval;
 			timer += (currentTime - lastTime);
-			
 			lastTime = currentTime;
 			
 			if (delta >= 1) {
@@ -83,6 +84,25 @@ public class GamePanel extends JPanel implements Runnable {
 				System.out.println("FPS:" + drawCount);
 				drawCount = 0;
 				timer = 0;
+				// 2. DRAW: draw the screen with the updated information
+				repaint(); // draws everything from paintComponent
+				
+				// wait until the next frame is drawn
+				try {
+					double remainingTime = nextDrawTime - System.nanoTime();
+					remainingTime /= 1000000;
+					
+					if (remainingTime < 0) {
+						remainingTime = 0;
+					}
+					
+					Thread.sleep((long) remainingTime);
+					
+					nextDrawTime += drawInterval;
+					
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
