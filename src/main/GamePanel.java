@@ -4,6 +4,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import entity.Player;
+
 public class GamePanel extends JPanel implements Runnable {
 	
 	// screen settings
@@ -22,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
+	Player player = new Player(this, keyH);
 	
 	// sets player's default position
 	int playerX = 100;
