@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	final int scale = 3; // scaling factor
 	
-	final int tileSize = originalTileSize * scale;
+	public final int tileSize = originalTileSize * scale;
 	final int screenWidth = maxScreenCol * tileSize;
 	final int screenHeight = maxScreenRow * tileSize;
 	
@@ -89,21 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	// updated each frame
 	public void update() {
-		if (keyH.upPressed) {
-			playerY -= playerSpeed;
-		}
-		
-		if (keyH.leftPressed) {
-			playerX -= playerSpeed;
-		}
-		
-		if (keyH.downPressed) {
-			playerY += playerSpeed;
-		}
-		
-		if (keyH.rightPressed) {
-			playerX += playerSpeed;
-		}
+		player.update();
 	}
 	
 	// painted onto the screen
@@ -111,8 +97,9 @@ public class GamePanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setColor(Color.white);
-		g2.fillRect(playerX, playerY, tileSize, tileSize);
+		
+		player.draw(g2);
+		
 		g2.dispose(); // saves some memory
 	}
 }
