@@ -24,7 +24,10 @@ public class TileManager {
 			"dungeon_floor", 
 			"dungeon_empty", 
 			"dungeon_statue1", 
-			"dungeon_statue2"
+			"dungeon_statue2",
+			"overworld_grass.png",
+			"overworld_tombstone.png",
+			"overworld_tree.png"
 	};
 	
 	public TileManager(GamePanel gp) {
