@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -15,31 +17,40 @@ public class TileManager {
 	Tile[] tile;
 	int mapTileNum[][];
 	
+	static final String TILE_FILE_SRC = "/tiles/%s.png";
+	static final String[] TILE_FILE_NAMES = {
+			"dungeon_ground", 
+			"dungeon_wall", 
+			"dungeon_floor", 
+			"dungeon_empty", 
+			"dungeon_statue1", 
+			"dungeon_statue2"
+	};
+	
 	public TileManager(GamePanel gp) {
 		this.gp = gp;
 		
-		tile = new Tile[10];
+		tile = new Tile[TILE_FILE_NAMES.length];
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 		
-		getTileImage();
+		getTileImages();
 		loadMap("/maps/map01.txt");
 	}
 	
-	public void getTileImage() {
+	public void getTileImages() {
 		try {
-			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dungeon_ground.png"));
-			
-
-			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dungeon_wall.png"));
-			
-
-			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dungeon_floor.png"));
+			for (int i = 0; i < TILE_FILE_NAMES.length; i++) {
+				tile[i] = new Tile();
+				getTileImage(i);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void getTileImage(int tileNum) throws IOException {
+		String tileFilePath = String.format(TILE_FILE_SRC, TILE_FILE_NAMES[tileNum]);
+		tile[tileNum].image = ImageIO.read(getClass().getResourceAsStream(tileFilePath));
 	}
 	
 	public void loadMap(String filePath) {
