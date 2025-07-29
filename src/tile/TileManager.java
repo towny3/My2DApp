@@ -35,6 +35,108 @@ public class TileManager {
 	}
 	
 	public void draw(Graphics2D g2) {
-		g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
+		int y = 0;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i <= 5 || i >= 10) {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 4 && i < 11) {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		for (int k = 0; k < 3; k++) {
+			y += gp.tileSize;
+			
+			for (int i = 0; i < 16; i++) {
+				if (i > 4 && i < 11) {
+					g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+				} else if ((i == 4 || i == 11) && k != 1) {
+					g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+				} else {
+					g2.drawImage(tile[2].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+				}
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 4 && i < 11) {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 6 && i < 9) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 5 && i < 9) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 5 && i < 9) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 5 && i < 10) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 5 && i < 10) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
+		
+		y += gp.tileSize;
+		
+		for (int i = 0; i < 16; i++) {
+			if (i > 5 && i < 10) {
+				g2.drawImage(tile[1].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			} else {
+				g2.drawImage(tile[0].image, gp.tileSize * i, y, gp.tileSize, gp.tileSize, null);
+			}
+		}
 	}
 }
