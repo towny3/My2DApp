@@ -17,17 +17,16 @@ public class TileManager {
 	Tile[] tile;
 	int mapTileNum[][];
 	
-	static final String TILE_FILE_SRC = "/tiles/%s.png";
+	static final String TILE_FILE_SRC = "/darktiles/%s.png";
 	static final String[] TILE_FILE_NAMES = {
-			"dungeon_ground", 
-			"dungeon_wall", 
-			"dungeon_floor", 
-			"dungeon_empty", 
-			"dungeon_statue1", 
-			"dungeon_statue2",
-			"overworld_grass.png",
-			"overworld_tombstone.png",
-			"overworld_tree.png"
+			"dark_black",
+			"dark_block1",
+			"dark_block2",
+			"dark_block3",
+			"dark_brick1",
+			"dark_brick2",
+			"dark_brick3",
+			"dark_white"
 	};
 	
 	public TileManager(GamePanel gp) {
